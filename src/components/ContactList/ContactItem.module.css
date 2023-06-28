@@ -1,0 +1,9 @@
+.itemContact {
+  padding: 5px;
+  max-width: 250px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  border: 2px solid black;
+}
