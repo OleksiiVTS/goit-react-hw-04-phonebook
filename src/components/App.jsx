@@ -5,17 +5,31 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
+const LS_KAY = 'list_contacts';
+
 class Phonebook extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      // { id: 'id-5', name: 'Adfds Gepeland', number: '227-91-26' },
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const data = JSON.parse(localStorage.getItem(LS_KAY));
+    if (data) {
+      this.setState({ contacts: data });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts.length !== prevState.contacts.length) {
+      localStorage.setItem(LS_KAY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   onDeletContact = id => {
     this.setState(state => ({
@@ -33,7 +47,7 @@ class Phonebook extends Component {
       alert(`${contactData.name} is aleady in contacs!`);
       return;
     }
-    const contacts = { ...contactData, id: nanoid() };
+    const contacts = { id: nanoid(), ...contactData };
 
     this.setState(prewState => ({
       contacts: [contacts, ...prewState.contacts],
