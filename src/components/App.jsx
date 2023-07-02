@@ -26,7 +26,7 @@ class Phonebook extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts.length !== prevState.contacts.length) {
+    if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem(LS_KAY, JSON.stringify(this.state.contacts));
     }
   }
