@@ -1,4 +1,4 @@
-import { Component, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import css from './App.module.css';
 import { nanoid } from 'nanoid'; //model.id = nanoid()
 import ContactForm from './ContactForm/ContactForm';
