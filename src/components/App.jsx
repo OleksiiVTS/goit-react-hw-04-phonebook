@@ -18,10 +18,7 @@ const Phonebook = () => {
   }, [contacts]);
 
   const onDeletContact = id => {
-    setContacts(
-      prevContacts =>
-        (prevContacts = contacts.filter(contact => contact.id !== id))
-    );
+    setContacts(contacts.filter(contact => contact.id !== id));
   };
 
   const onContactInfo = contactData => {
@@ -35,7 +32,6 @@ const Phonebook = () => {
       return;
     }
     const contactsID = { id: nanoid(), ...contactData };
-    console.log(contactsID);
     setContacts(prevContacts => (prevContacts = [contactsID, ...prevContacts]));
   };
 
