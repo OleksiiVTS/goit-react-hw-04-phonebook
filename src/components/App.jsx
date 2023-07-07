@@ -31,8 +31,8 @@ const Phonebook = () => {
       alert(`${contactData.name} is aleady in contacs!`);
       return;
     }
-    const contactsID = { id: nanoid(), ...contactData };
-    setContacts(prevContacts => (prevContacts = [contactsID, ...prevContacts]));
+    const newContacts = { id: nanoid(), ...contactData };
+    setContacts(prevContacts => [newContacts, ...prevContacts]);
   };
 
   const getVisibleContacts = () => {
@@ -63,88 +63,5 @@ const Phonebook = () => {
     </div>
   );
 };
-
-// class Phonebook extends Component {
-//   state = {
-//     contacts: [
-//       // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-//       // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-//       // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-//       // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-//     ],
-//     filter: '',
-//   };
-
-//   componentDidMount() {
-//     const data = JSON.parse(localStorage.getItem(LS_KAY));
-//     if (data) {
-//       this.setState({ contacts: data });
-//     }
-//   }
-
-//   componentDidUpdate(prevProps, prevState) {
-//     if (this.state.contacts !== prevState.contacts) {
-//       localStorage.setItem(LS_KAY, JSON.stringify(this.state.contacts));
-//     }
-//   }
-
-//   onDeletContact = id => {
-//     this.setState(state => ({
-//       contacts: state.contacts.filter(contact => contact.id !== id),
-//     }));
-//   };
-
-//   onContactInfo = contactData => {
-//     const revise = this.state.contacts.find(
-//       element =>
-//         element.name.toLocaleLowerCase() ===
-//         contactData.name.toLocaleLowerCase()
-//     );
-//     if (revise) {
-//       alert(`${contactData.name} is aleady in contacs!`);
-//       return;
-//     }
-
-//     const contacts = { id: nanoid(), ...contactData };
-
-//     this.setState(prewState => ({
-//       contacts: [contacts, ...prewState.contacts],
-//     }));
-//   };
-
-//   onFilterContact = evt => {
-//     this.setState({ filter: evt.target.value });
-//   };
-
-//   getVisibleContacts = () => {
-//     const normalisedFilter = this.state.filter.toLowerCase();
-//     return this.state.contacts.filter(contact =>
-//       contact.name.toLowerCase().includes(normalisedFilter)
-//     );
-//   };
-
-//   render() {
-//     const contacts = this.getVisibleContacts();
-//     return (
-//       <div className={css.appDiv}>
-//         <h1>Phonebook</h1>
-//         <ContactForm onContactInfo={this.onContactInfo} />
-//         <section>
-//           <h2>Contacts</h2>
-//           <Filter
-//             onFilterData={this.state.filter}
-//             onFilterContact={this.onFilterContact}
-//           />
-//           {contacts.length > 0 && (
-//             <ContactList
-//               onDeletContact={this.onDeletContact}
-//               listContacts={contacts}
-//             />
-//           )}
-//         </section>
-//       </div>
-//     );
-//   }
-// }
 
 export default Phonebook;
