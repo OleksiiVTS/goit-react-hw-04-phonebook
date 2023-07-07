@@ -43,7 +43,7 @@ const Phonebook = () => {
   };
 
   const onFilterContact = evt => {
-    setFilter(setFilter => (setFilter = evt.target.value));
+    setFilter(evt.target.value);
   };
 
   return (

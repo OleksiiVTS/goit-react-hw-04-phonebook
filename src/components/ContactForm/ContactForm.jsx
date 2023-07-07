@@ -9,8 +9,8 @@ const ContactForm = ({ onContactInfo }) => {
     evt.preventDefault();
 
     onContactInfo({ name, number });
-    setName(name => (name = ''));
-    setNumber(number => (number = ''));
+    setName('');
+    setNumber('');
   };
 
   return (
@@ -24,7 +24,7 @@ const ContactForm = ({ onContactInfo }) => {
           // pattern="/\[a-zA-Za-яА-Я]{10} [a-zA-Za-яА-Я]{10}/"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           value={name}
-          onChange={evt => setName(name => (name = evt.target.value))}
+          onChange={evt => setName(evt.target.value)}
           required
         />
       </label>
@@ -39,7 +39,7 @@ const ContactForm = ({ onContactInfo }) => {
           pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           value={number}
-          onChange={evt => setNumber(number => (number = evt.target.value))}
+          onChange={evt => setNumber(evt.target.value)}
           required
         />
       </label>
